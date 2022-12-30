@@ -1,0 +1,75 @@
+{% extends 'users/UserBase.html'%}
+{% load static %}
+{%block contents%}
+
+
+
+ <p class="footer_title bg-light text-dark">
+     <h2 class="bg-light text-dark">User Data Preparation Page</h2>
+
+</p>
+<strong>
+    </ul>
+    </p>
+</strong>
+ <table class="table table-bordered bg-light text-dark" id="example" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Age</th>
+        <th>Sex</th>
+        <th>CP</th>
+        <th>trestbps</th>
+        <th>chol</th>
+        <th>restecg</th>
+        <th>thalach</th>
+        <th>exang </th>
+        <th>oldpeak </th>
+        <th>slope </th>
+        <th>ca </th>
+        <th>thal </th>
+        <th>target </th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+                                            <tr style="color: Black">
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{i.age}}</td>
+                                                <td>{{i.sex}}</td>
+                                                <td>{{i.cp}}</td>
+                                                <td>{{i.trestbps}}</td>
+                                                <td>{{i.chol}}</td>
+                                                <td>{{i.restecg}}</td>
+                                                <td>{{i.thalach}}</td>
+                                                <td>{{i.exang}}</td>
+                                                <td>{{i.oldpeak}}</td>
+                                                <td>{{i.slope}}</td>
+                                                <td>{{i.ca}}</td>
+                                                <td>{{i.thal}}</td>
+                                                <td>{{i.target}}</td>
+
+
+
+                                            </tr>
+                                            {% endfor %}
+
+    </tbody>
+  </table>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+<center>
+
+                        {% if messages %}
+                               {% for message in messages %}
+                                  <font color='RED'> {{ message }}</font>
+                               {% endfor %}
+                           {% endif %}
+
+</center>
+ </p>
+{%endblock%}

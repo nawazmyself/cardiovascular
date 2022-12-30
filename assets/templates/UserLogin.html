@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{%block contents%}
+ <p class="footer_title bg-light text-dark">
+
+  <center>
+<h2 class="bg-light text-dark">User Login Form</h2>
+<span class="byline" >
+                <form method="POST" action="{%url 'UserLoginCheck'%}" class="bg-light text-dark">
+                {% csrf_token %}
+                <table>
+
+                    <tr><td>Login ID</td><td><input type="text" name="loginname" pattern="[a-zA-Z]+" required="True"></td></tr>
+                    <tr><td>Password</td><td><input type="password" name="pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="True"></td></tr>
+
+                    <tr><td><button  class="btn btn-outline-success my-2 my-sm-0" type="submit" style = "margin-left:20%;">Login</button></td></tr>
+
+                        {% if messages %}
+                               {% for message in messages %}
+                                  <font color='GREEN'> {{ message }}</font>
+                               {% endfor %}
+                           {% endif %}
+
+                </table>
+
+            </form>  </p><a class="nav-link" href="{%url 'UserRegister'%}">Register Here</a>
+            </span>
+ </center>
+
+</p>
+{%endblock%}

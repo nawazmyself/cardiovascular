@@ -1,0 +1,30 @@
+{% extends 'admins/AdminBase.html'%}
+{%block contents%}
+ <p class="footer_title bg-light text-dark">
+     <h2 class="bg-light text-dark">Admin View Accuracy Page</h2>
+
+ <table class="table table-bordered footer_title bg-light text-dark">
+    <tr>
+    <th>S.No</th>
+    <th>Algorithm</th>
+    <th>Accuracy</th>
+    </tr>
+    {%for key,values in rsltdict.items%}
+    <tr>
+       <td> {{forloop.counter}}</td>
+        <td>{{key}}</td>
+        <td>{{values}}</td>
+    </tr>
+
+    {%endfor%}
+</table>
+</p>
+ <p class="footer_title bg-light text-dark">For better Prformnace use Jupyter Notebook
+    <ul class="bg-light text-dark">
+    <li>Better to use Jupyter Notebook</li>
+    <li>In pycharm the output will be single thread model</li>
+    <li>Mulitple Instance will not run at a time</li>
+    <li>if Server Stops Restart it</li>
+</ul>
+ </p>
+{%endblock%}

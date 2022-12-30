@@ -1,0 +1,71 @@
+{% extends 'admins/AdminBase.html'%}
+{%block contents%}
+ <p class="footer_title bg-light text-dark">
+     <h2 class="bg-light text-dark">Admin Data View  Page</h2>
+
+
+<table class="table table-bordered footer_title bg-light text-dark">
+  <thead>
+    <tr>
+        <th>S.No</th>
+        <th>Age</th>
+        <th>Sex</th>
+        <th>CP</th>
+        <th>trestbps</th>
+        <th>chol</th>
+        <th>restecg</th>
+        <th>thalach</th>
+        <th>exang </th>
+        <th>oldpeak </th>
+        <th>slope </th>
+        <th>ca </th>
+        <th>thal </th>
+        <th>target </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in data %}
+      <tr>
+        <td>{{i.id}}</td>
+                                                <td>{{i.age}}</td>
+                                                <td>{{i.sex}}</td>
+                                                <td>{{i.cp}}</td>
+                                                <td>{{i.trestbps}}</td>
+                                                <td>{{i.chol}}</td>
+                                                <td>{{i.restecg}}</td>
+                                                <td>{{i.thalach}}</td>
+                                                <td>{{i.exang}}</td>
+                                                <td>{{i.oldpeak}}</td>
+                                                <td>{{i.slope}}</td>
+                                                <td>{{i.ca}}</td>
+                                                <td>{{i.thal}}</td>
+                                                <td>{{i.target}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if data.has_other_pages %}
+  <ul class="pagination">
+    {% if data.has_previous %}
+      <li><a href="?page={{ data.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in data.paginator.page_range %}
+      {% if data.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if data.has_next %}
+      <li><a href="?page={{ data.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+ </p>
+{%endblock%}
